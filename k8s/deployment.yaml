@@ -54,9 +54,9 @@ spec:
     spec:
       containers:
         - name: api
-          image: fabricioveronez/api-produto:{{tag}}
+          image: andrebaldo/api-produto:{{tag}}
           ports: 
-          - containerPort: 8080
+          - containerPort: 8383
           env: 
           - name: MONGODB_URI
             value: mongodb://mongouser:mongopwd@mongodb-service:27017/admin
@@ -70,7 +70,7 @@ spec:
     app: api
   ports:
     - port: 80
-      targetPort: 8080   
+      targetPort: 8383   
       nodePort: 30000   
   type: LoadBalancer
 
