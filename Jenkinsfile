@@ -5,18 +5,18 @@ pipeline {
         stage ('Build Image') {
             steps {
                 script {
-                    dockerapp = docker.build("andrebaldo/api-produto:v1", '-f ./src/Dockerfile ./src') 
+                //    dockerapp = docker.build("andrebaldo/api-produto:v1", '-f ./src/Dockerfile ./src') 
                 }                
             }
         }
 
         stage ('Push Image') {
             steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-                        dockerapp.push('latest')
-                        dockerapp.push("v1")
-                    }
+                //script {
+                 //   docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                  //      dockerapp.push('latest')
+                   //     dockerapp.push("v1")
+                   // }
                 }
             }
         }
@@ -27,8 +27,7 @@ pipeline {
             }
             steps {
                
-                    sh 'sed -i "s/{{tag}}/$tag_version/g" ./k8s/deployment.yaml'
-                    sh 'kubectl apply -f ./k8s/deployment.yaml'
+                sh 'kubectl apply -f ./k8s/deployment.yaml'
                 
             }
         }
