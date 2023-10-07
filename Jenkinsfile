@@ -32,5 +32,5 @@ pipeline {
                     //kubernetesDeploy(configs: "deployment.yaml")
                 }
             }
-        }
-    
+    }     
+}   
