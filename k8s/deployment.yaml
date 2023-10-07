@@ -54,7 +54,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: andrebaldo/api-produto
+          image: andrebaldo/api-produto:{{tag}}
           ports: 
           - containerPort: 8383
           env: 
