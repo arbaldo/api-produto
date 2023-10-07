@@ -26,9 +26,9 @@ pipeline {
                 tag_version = "${env.BUILD_ID}"
             }
             steps {
-                //withKubeConfig([credentialsId: 'kubeconfig']) {
+                withKubeConfig([clusterName : 'apiproduto']) {
                     sh 'sed -i "s/{{tag}}/$tag_version/g" ./k8s/deployment.yaml'
-                    sh 'kubectl apply -f ./k8s/deployment.yaml --server PE08XFX5'
+                    sh 'kubectl apply -f ./k8s/deployment.yaml'
                     //kubernetesDeploy(configs: "deployment.yaml")
                 }
             }
